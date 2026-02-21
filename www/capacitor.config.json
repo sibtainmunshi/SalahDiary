@@ -1,0 +1,42 @@
+{
+  "appId": "com.salahdiary.app",
+  "appName": "Salah Diary",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": []
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false,
+    "overrideUserAgent": null,
+    "appendUserAgent": null,
+    "backgroundColor": "#0D1117",
+    "loggingBehavior": "none"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": true,
+      "launchFadeOutDuration": 0,
+      "backgroundColor": "#0D1117",
+      "showSpinner": false,
+      "androidSplashResourceName": "transparent",
+      "splashFullScreen": true,
+      "splashImmersive": true,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "dark",
+      "resizeOnFullScreen": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon_config_sample",
+      "iconColor": "#9333EA",
+      "sound": "beep.wav"
+    }
+  }
+}

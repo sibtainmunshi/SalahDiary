@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433228794223",
+    "project_id": "salahdiary-543e1",
+    "storage_bucket": "salahdiary-543e1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433228794223:android:64acf4eaf550dd700a009a",
+        "android_client_info": {
+          "package_name": "com.yourdomain.salahdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433228794223-n88ibai5oh1pm8s2niomquju1i6ugoc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7JuG_X2cv0T7f_DpkoR_DN5jtU1n2Z1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433228794223-n88ibai5oh1pm8s2niomquju1i6ugoc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "com.yourdomain.salahdiary",
+  "appName": "SalahDiary",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

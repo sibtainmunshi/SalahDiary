@@ -1,0 +1,41 @@
+# Node modules
+node_modules/
+
+# Android build files
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/local.properties
+*.iml
+
+# Android backup
+android_backup/
+
+# Capacitor
+.capacitor/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+
+# Key files (IMPORTANT - don't push private keys!)
+android/key.properties
+*.keystore
+*.jks
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,26 @@
+Firebase SHA-1 Fingerprints for Salah Diary
+============================================
+
+Package Name: com.yourdomain.salahdiary
+
+DEBUG SHA-1 (for development/testing):
+55:26:6C:1C:9A:48:3C:50:2B:22:B5:49:CA:A3:9D:2C:6A:2A:51:A3
+
+RELEASE SHA-1 (for production APK):
+A0:64:46:20:44:AA:33:99:96:89:42:AB:2F:76:31:48:AE:F5:41:82
+
+============================================
+Add BOTH fingerprints to Firebase Console:
+https://console.firebase.google.com/project/salahdiary-543e1/settings/general
+
+Steps:
+1. Go to Project Settings
+2. Scroll to "Your apps" section
+3. Select Android app (com.yourdomain.salahdiary)
+4. Scroll to "SHA certificate fingerprints"
+5. Click "Add fingerprint" and paste RELEASE SHA-1
+6. Click "Add fingerprint" again and paste DEBUG SHA-1
+7. Click "Save"
+8. Download new google-services.json
+9. Replace android/app/google-services.json
+10. Rebuild app using build-apk.bat

@@ -1,0 +1,9 @@
+$env:JAVA_HOME="C:\Program Files\Android\Android Studio\jbr"
+$env:PATH="$env:JAVA_HOME\bin;$env:PATH"
+cd android
+.\gradlew assembleRelease
+
+$env:JAVA_HOME="C:\Program Files\Android\Android Studio\jbr"
+$env:PATH="$env:JAVA_HOME\bin;$env:PATH"
+cd android
+.\gradlew assembleRelease
