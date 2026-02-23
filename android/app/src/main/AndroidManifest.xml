@@ -13,6 +13,10 @@
     <!-- Notification Permission (Android 13+) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- Exact Alarm Permission (Android 12+) - CRITICAL FOR PRAYER NOTIFICATIONS -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
     <!-- Wake Lock for notifications -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -46,6 +50,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <!-- Deep link for Firebase Auth redirect -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" 
+                      android:host="salahdiary-543e1.firebaseapp.com"
+                      android:pathPrefix="/__/auth/handler" />
+            </intent-filter>
+            
+            <!-- Custom URL scheme for auth callback -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.yourdomain.salahdiary" />
             </intent-filter>
         </activity>
 

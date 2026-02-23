@@ -2,5 +2,14 @@
   "appId": "com.yourdomain.salahdiary",
   "appName": "SalahDiary",
   "webDir": "www",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "plugins": {
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "clientId": "433228794223-mf6he8m4vieqqfenq309v4o5v8bk4b2r.apps.googleusercontent.com",
+      "serverClientId": "433228794223-mf6he8m4vieqqfenq309v4o5v8bk4b2r.apps.googleusercontent.com",
+      "androidClientId": "433228794223-mf6he8m4vieqqfenq309v4o5v8bk4b2r.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  }
 }

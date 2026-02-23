@@ -401,6 +401,36 @@
             color: white;
         }
 
+        .btn-google {
+            display: flex !important;
+            background-color: white;
+            color: #3c4043;
+            border: 1px solid #dadce0;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-google:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .btn-google {
+            background-color: white;
+            border-color: #dadce0;
+        }
+
+        .light-theme .btn-google:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Divider between Google and email/password options */
+        .divider-container {
+            display: flex !important;
+        }
+
         /* Welcome Screen */
         #welcome-screen .app-icon {
             position: relative;
@@ -1933,20 +1963,37 @@
             min-width: 35px;
         }
 
-        /* Stats Quote Card */
+        /* Stats Quote Card - Info Bar Style */
         .stats-quote {
-            padding: 12px 20px;
-            text-align: center;
-            background: rgba(147, 51, 234, 0.08);
-            border: 1px solid rgba(147, 51, 234, 0.15);
+            padding: 10px 16px;
+            text-align: left;
+            background: rgba(147, 51, 234, 0.06);
+            border-left: 3px solid var(--primary-purple);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-quote::before {
+            content: "💡";
+            font-size: 18px;
         }
 
         .stats-quote span {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-primary);
-            /* Use primary text color for better visibility */
-            opacity: 0.8;
             font-weight: 500;
+            flex: 1;
+        }
+
+        .light-theme .stats-quote {
+            background: rgba(139, 92, 246, 0.08);
+            border-left-color: #8b5cf6;
+        }
+
+        .light-theme .stats-quote span {
+            color: #4c1d95;
         }
 
         .prayer-status-icon {
@@ -2608,6 +2655,12 @@
                 <h1 style="font-size: 32px; font-weight: 800; margin: 15px 0 8px 0;">Salah Diary</h1>
                 <p style="color: var(--text-secondary); margin-top: 0; margin-bottom: 40px; font-size: 16px;">Track,
                     reflect, and build your prayer habit.</p>
+                
+                <!-- Version Indicator -->
+                <div style="position: absolute; top: 20px; right: 20px; background: var(--primary-purple); color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">
+                    v3.1 - AndroidID
+                </div>
+                
                 <h2 class="quote-question">Which deed is dearest to Allah?</h2>
                 <p class="quote-answer">"The Prophet (ﷺ) said, 'The most beloved of deeds to Allah are the most
                     consistent of them, even if they are few.'"<br>- Sahih al-Bukhari</p>
@@ -2686,8 +2739,13 @@
                     <h2 style="margin-bottom: 20px;">Continue as...</h2>
                     <button class="btn btn-primary" id="continue-as-btn"
                         style="text-align: left; display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                        <i class="fas fa-user-circle" style="font-size: 24px;"></i>
-                        <span id="continue-as-email" style="font-weight: 600;"></span>
+                        <div id="continue-as-avatar" style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(147, 51, 234, 0.15); border: 2px solid rgba(147, 51, 234, 0.3);">
+                            <i class="fas fa-user" style="font-size: 16px; color: var(--primary-purple);"></i>
+                        </div>
+                        <div style="flex: 1; text-align: left;">
+                            <div id="continue-as-name" style="font-weight: 600; font-size: 14px; margin-bottom: 2px;"></div>
+                            <div id="continue-as-email" style="font-weight: 500; font-size: 13px; opacity: 0.8;"></div>
+                        </div>
                     </button>
                     <button class="btn btn-secondary" id="use-different-account-btn">Use a Different Account</button>
                 </div>
@@ -2695,6 +2753,24 @@
 
                 <div id="signup-form" class="form-container active">
                     <h2>Create Account</h2>
+                    
+                    <!-- Google Sign-In Button -->
+                    <button class="btn btn-google" id="google-signup-btn" type="button">
+                        <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right: 10px;">
+                            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                            <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
+                            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+                    
+                    <div class="divider-container" style="display: flex; align-items: center; margin: 20px 0;">
+                        <div style="flex: 1; height: 1px; background: var(--card-border);"></div>
+                        <span style="padding: 0 15px; color: var(--text-secondary); font-size: 14px;">OR</span>
+                        <div style="flex: 1; height: 1px; background: var(--card-border);"></div>
+                    </div>
+                    
                     <div class="input-group"><input type="email" id="signup-email" placeholder="Email"
                             autocomplete="off"></div>
                     <div class="input-group"><input type="password" id="signup-password" placeholder="Password"
@@ -2706,6 +2782,24 @@
                 </div>
                 <div id="login-form" class="form-container">
                     <h2>Welcome Back!</h2>
+                    
+                    <!-- Google Sign-In Button -->
+                    <button class="btn btn-google" id="google-login-btn" type="button">
+                        <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right: 10px;">
+                            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                            <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
+                            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+                    
+                    <div class="divider-container" style="display: flex; align-items: center; margin: 20px 0;">
+                        <div style="flex: 1; height: 1px; background: var(--card-border);"></div>
+                        <span style="padding: 0 15px; color: var(--text-secondary); font-size: 14px;">OR</span>
+                        <div style="flex: 1; height: 1px; background: var(--card-border);"></div>
+                    </div>
+                    
                     <div class="input-group"><input type="email" id="login-email" placeholder="Email"
                             autocomplete="off"></div>
                     <div class="input-group"><input type="password" id="login-password" placeholder="Password"
@@ -2954,11 +3048,15 @@
 
                 <div class="settings-section glass-card">
                     <h3>Profile</h3>
-                    <div class="settings-item">
-                        <label>Email</label>
-                        <span id="user-email-display">loading...</span>
+                    <div style="display: flex; align-items: center; gap: 15px; padding: 10px 0;">
+                        <div id="settings-profile-picture" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; position: relative; background: rgba(147, 51, 234, 0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(147, 51, 234, 0.3);">
+                            <i class="fas fa-user" style="font-size: 26px; color: var(--primary-purple);"></i>
+                        </div>
+                        <div style="flex: 1; min-width: 0; text-align: left;">
+                            <div id="settings-display-name" style="font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">User</div>
+                            <div id="user-email-display" style="font-size: 13px; color: var(--text-secondary);">loading...</div>
+                        </div>
                     </div>
-                    <!-- Add Name, Gender? -->
                 </div>
 
                 <div class="settings-section glass-card">
@@ -3169,9 +3267,14 @@
             createUserWithEmailAndPassword,
             signInWithEmailAndPassword,
             signOut,
-            sendPasswordResetEmail, // NEW: Import for password reset
+            sendPasswordResetEmail,
             setPersistence,
-            browserLocalPersistence
+            browserLocalPersistence,
+            GoogleAuthProvider,
+            signInWithPopup,
+            signInWithRedirect,
+            signInWithCredential,
+            getRedirectResult
         } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import {
             getFirestore,
@@ -3203,6 +3306,9 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
         setLogLevel('debug'); // For more detailed console logs from Firestore
+        
+        // Constants
+        const savedEmailKey = 'salahDiarySavedEmail'; // Key for localStorage
 
         // Enable Firestore offline persistence
         enableIndexedDbPersistence(db)
@@ -3240,7 +3346,78 @@
             return null;
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Listen for app coming to foreground (after browser redirect)
+            if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+                window.Capacitor.Plugins.App.addListener('appStateChange', async (state) => {
+                    console.log('📱 App state changed:', state.isActive ? 'ACTIVE' : 'BACKGROUND');
+                    
+                    if (state.isActive) {
+                        // App came to foreground, check for auth result
+                        console.log('🔄 App resumed, checking for auth result...');
+                        
+                        try {
+                            const result = await getRedirectResult(auth);
+                            if (result && result.user) {
+                                console.log("✅ Google Sign-In successful after resume!");
+                                console.log("   User:", result.user.email);
+                                console.log("   Photo:", result.user.photoURL);
+                                console.log("   Name:", result.user.displayName);
+                                
+                                // Save profile data
+                                localStorage.setItem(savedEmailKey, result.user.email);
+                                localStorage.setItem('signInMethod', 'google');
+                                if (result.user.photoURL) {
+                                    localStorage.setItem('userProfilePicture', result.user.photoURL);
+                                }
+                                if (result.user.displayName) {
+                                    localStorage.setItem('userDisplayName', result.user.displayName);
+                                }
+                                
+                                // Hide loading
+                                showLoading(false);
+                            }
+                        } catch (error) {
+                            console.log("   Error checking auth result:", error);
+                        }
+                    }
+                });
+            }
+            
+            // Handle deep link from Google Sign-In redirect
+            if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+                window.Capacitor.Plugins.App.addListener('appUrlOpen', (data) => {
+                    console.log('🔗 Deep link received:', data.url);
+                    
+                    // Check if this is a Firebase auth redirect
+                    if (data.url && data.url.includes('__/auth/handler')) {
+                        console.log('✅ Firebase auth redirect detected!');
+                        // Firebase will automatically handle this
+                        // Just need to trigger getRedirectResult
+                        setTimeout(() => {
+                            getRedirectResult(auth).then((result) => {
+                                if (result && result.user) {
+                                    console.log("✅ Google Sign-In successful via deep link!");
+                                    console.log("   User:", result.user.email);
+                                    
+                                    // Save profile data
+                                    localStorage.setItem(savedEmailKey, result.user.email);
+                                    localStorage.setItem('signInMethod', 'google');
+                                    if (result.user.photoURL) {
+                                        localStorage.setItem('userProfilePicture', result.user.photoURL);
+                                    }
+                                    if (result.user.displayName) {
+                                        localStorage.setItem('userDisplayName', result.user.displayName);
+                                    }
+                                }
+                            }).catch((error) => {
+                                console.log("Redirect result error:", error);
+                            });
+                        }, 500);
+                    }
+                });
+            }
+            
             // --- NEW: Splash Screen Logic ---
             const splashScreen = document.getElementById('splash-screen');
             setTimeout(() => {
@@ -3300,6 +3477,8 @@
                         madhab: null, // User's madhab selection (hanafi/shafi)
                         madhabSelectedDuringOnboarding: false, // Flag to track onboarding selection
                         location: { city: 'Ahmedabad', country: 'India', lat: 23.0225, lon: 72.5714 }, // Default location
+                        profilePicture: null, // User's profile picture URL (from Google or custom)
+                        displayName: null, // User's display name (from Google or custom)
                         settings: {
                             notifications: true,
                             calculationMethod: "1_hanafi", // Default Hanafi for India/Pakistan
@@ -3372,6 +3551,8 @@
             const statsViewMonthBtn = document.getElementById('stats-view-month-btn');
             const statsViewWeekBtn = document.getElementById('stats-view-week-btn');
             const userEmailDisplay = document.getElementById('user-email-display');
+            const settingsDisplayName = document.getElementById('settings-display-name');
+            const settingsProfilePicture = document.getElementById('settings-profile-picture');
             const themeToggle = document.getElementById('theme-toggle');
             const notificationToggle = document.getElementById('notification-toggle');
             const calculationMethodSelect = document.getElementById('calculation-method');
@@ -3399,8 +3580,12 @@
             const continueAsContainer = document.getElementById('continue-as-container');
             const continueAsBtn = document.getElementById('continue-as-btn');
             const continueAsEmail = document.getElementById('continue-as-email');
+            const continueAsName = document.getElementById('continue-as-name');
+            const continueAsAvatar = document.getElementById('continue-as-avatar');
             const useDifferentAccountBtn = document.getElementById('use-different-account-btn');
-            const savedEmailKey = 'salahDiarySavedEmail'; // Key for localStorage
+            // *** GOOGLE SIGN-IN BUTTONS ***
+            const googleSignupBtn = document.getElementById('google-signup-btn');
+            const googleLoginBtn = document.getElementById('google-login-btn');
             // *** NEW FORGOT PASSWORD ELEMENTS ***
             const forgotPasswordLink = document.getElementById('forgot-password-link');
             const forgotPasswordModal = document.getElementById('forgot-password-modal');
@@ -3494,6 +3679,34 @@
                 });
             };
 
+            // Check for redirect result on app startup (for Google Sign-In)
+            if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) {
+                console.log("🔄 Checking for redirect result...");
+                try {
+                    const result = await getRedirectResult(auth);
+                    if (result && result.user) {
+                        console.log("✅ Google Sign-In successful via redirect!");
+                        console.log("   User:", result.user.email);
+                        console.log("   Photo:", result.user.photoURL);
+                        console.log("   Name:", result.user.displayName);
+                        
+                        // Save profile data
+                        localStorage.setItem(savedEmailKey, result.user.email);
+                        localStorage.setItem('signInMethod', 'google');
+                        if (result.user.photoURL) {
+                            localStorage.setItem('userProfilePicture', result.user.photoURL);
+                        }
+                        if (result.user.displayName) {
+                            localStorage.setItem('userDisplayName', result.user.displayName);
+                        }
+                    } else {
+                        console.log("   No redirect result found");
+                    }
+                } catch (error) {
+                    console.log("   Redirect result check error:", error.code, error.message);
+                }
+            }
+
             // Main authentication state listener
             onAuthStateChanged(auth, async (user) => {
                 console.log("🔍 onAuthStateChanged triggered");
@@ -3553,6 +3766,18 @@
                 if (user) {
                     console.log("User is signed in:", user.uid);
                     appState.user.details = user;
+                    
+                    // Sync Google profile data if available
+                    if (user.photoURL) {
+                        appState.user.data.profilePicture = user.photoURL;
+                        localStorage.setItem('userProfilePicture', user.photoURL);
+                        console.log("📸 Profile picture synced:", user.photoURL);
+                    }
+                    if (user.displayName) {
+                        appState.user.data.displayName = user.displayName;
+                        localStorage.setItem('userDisplayName', user.displayName);
+                        console.log("👤 Display name synced:", user.displayName);
+                    }
                     
                     // Mark as logged in for offline support
                     localStorage.setItem('wasLoggedIn', 'true');
@@ -3635,6 +3860,17 @@
                                 appState.user.data.settings.calculationMethod
                             );
 
+                            // *** CRITICAL FIX: Schedule notifications on app load if enabled ***
+                            if (appState.user.data.settings.notifications) {
+                                console.log("🔔 Scheduling notifications on app load...");
+                                // Wait a bit for prayer times to load first
+                                setTimeout(() => {
+                                    if (appState.prayerTimes) {
+                                        schedulePrayerNotifications();
+                                    }
+                                }, 2000); // 2 second delay to ensure prayer times are fetched
+                            }
+
                             // Navigate to the main app screen
                             showScreen('main-app-screen');
                             setActiveTab('home'); // Default to home tab
@@ -3646,7 +3882,10 @@
                             
                             // IMPORTANT: For existing users testing madhab selection
                             // Check if this is actually an existing user who needs madhab update
-                            if (appState.user.data.madhabSelectedDuringOnboarding && appState.user.data.madhab) {
+                            // We check if onboardingCompleted flag exists - if not, this is a genuinely new user
+                            const isGenuinelyNewUser = !localStorage.getItem('onboardingCompleted');
+                            
+                            if (!isGenuinelyNewUser && appState.user.data.madhabSelectedDuringOnboarding && appState.user.data.madhab) {
                                 console.log("🔄 Existing user with new madhab selection - updating Firebase...");
                                 await saveUserData(user.uid);
                                 console.log("✅ Existing user madhab selection saved!");
@@ -3662,13 +3901,24 @@
                                     appState.user.data.location.lon,
                                     appState.user.data.settings.calculationMethod
                                 );
+                                
+                                // *** CRITICAL FIX: Schedule notifications for existing user with madhab update ***
+                                if (appState.user.data.settings.notifications) {
+                                    console.log("🔔 Scheduling notifications after madhab update...");
+                                    setTimeout(() => {
+                                        if (appState.prayerTimes) {
+                                            schedulePrayerNotifications();
+                                        }
+                                    }, 2000);
+                                }
+                                
                                 showScreen('main-app-screen');
                                 setActiveTab('home');
                                 listenToDiaryData(user.uid);
                                 return;
                             }
                             
-                            // Save initial default data (like gender chosen earlier) before onboarding
+                            // Save initial default data (like madhab chosen earlier) before onboarding
                             await saveUserData(user.uid);
                             applyTheme('dark'); // Default to dark for onboarding
                             showScreen('notification-screen'); // Start next onboarding step
@@ -3700,6 +3950,16 @@
                                     appState.user.data.location.lon,
                                     appState.user.data.settings.calculationMethod
                                 );
+                                
+                                // *** CRITICAL FIX: Schedule notifications in offline mode too ***
+                                if (appState.user.data.settings.notifications) {
+                                    console.log("🔔 Scheduling notifications in offline mode...");
+                                    setTimeout(() => {
+                                        if (appState.prayerTimes) {
+                                            schedulePrayerNotifications();
+                                        }
+                                    }, 2000);
+                                }
                                 
                                 // Navigate to main app
                                 showScreen('main-app-screen');
@@ -3857,11 +4117,33 @@
             // *** NEW FUNCTION to initialize the Auth Screen ***
             function initAuthScreen() {
                 const savedEmail = localStorage.getItem(savedEmailKey);
+                const signInMethod = localStorage.getItem('signInMethod');
+                const profilePicture = localStorage.getItem('userProfilePicture');
+                const displayName = localStorage.getItem('userDisplayName');
                 showScreen('auth-screen'); // Show the parent screen
 
                 if (savedEmail) {
                     // Found a saved email
                     if (continueAsEmail) continueAsEmail.textContent = savedEmail;
+                    if (continueAsName) {
+                        continueAsName.textContent = displayName || savedEmail.split('@')[0];
+                    }
+                    
+                    // Update avatar based on sign-in method
+                    if (continueAsAvatar) {
+                        if (signInMethod === 'google' && profilePicture) {
+                            // Show Google profile picture (referrerpolicy needed for Google URLs)
+                            continueAsAvatar.innerHTML = `<img src="${profilePicture}" alt="Profile" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                        } else if (signInMethod === 'google') {
+                            // Show Google icon if no picture
+                            continueAsAvatar.innerHTML = `<i class="fab fa-google" style="font-size: 24px; color: #4285F4;"></i>`;
+                        } else {
+                            // Show initials-based avatar for email/password users
+                            const userName = displayName || savedEmail.split('@')[0] || 'User';
+                            continueAsAvatar.innerHTML = generateInitialsAvatar(userName, 40);
+                        }
+                    }
+                    
                     if (continueAsContainer) continueAsContainer.style.display = 'block';
 
                     // Hide other forms and footer
@@ -3915,12 +4197,14 @@
                         await createUserWithEmailAndPassword(auth, email, password);
                         console.log("✅ Account created successfully!");
                         localStorage.setItem(savedEmailKey, email); // *** SAVE EMAIL ***
+                        localStorage.setItem('signInMethod', 'password'); // Track sign-in method
                         // onAuthStateChanged will handle the rest
                     } else {
                         console.log("🔑 Logging in...");
                         await signInWithEmailAndPassword(auth, email, password);
                         console.log("✅ Login successful!");
                         localStorage.setItem(savedEmailKey, email); // *** SAVE EMAIL ***
+                        localStorage.setItem('signInMethod', 'password'); // Track sign-in method
                         // onAuthStateChanged will handle the rest
                     }
                 } catch (error) {
@@ -3957,6 +4241,157 @@
                     showLoading(false); // Only hide loading on error
                 }
                 // Do not hide loading on success, let onAuthStateChanged handle it
+            };
+
+            // Google Sign-In Handler (Native Plugin - Properly Configured)
+            const handleGoogleSignIn = async () => {
+                showLoading(true);
+                console.log("🔐 Attempting Google Sign-In...");
+                
+                try {
+                    // Check if we're on native platform
+                    const isNative = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform();
+                    const hasGoogleAuth = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.GoogleAuth;
+                    
+                    console.log("   Platform check:", { isNative, hasGoogleAuth });
+                    
+                    if (isNative && hasGoogleAuth) {
+                        // NATIVE: Use Capacitor Google Auth plugin
+                        console.log("📱 Using native Google Auth plugin");
+                        const { GoogleAuth } = window.Capacitor.Plugins;
+                        
+                        try {
+                            // Initialize plugin first
+                            console.log("   Initializing GoogleAuth...");
+                            await GoogleAuth.initialize();
+                            console.log("   ✅ GoogleAuth initialized");
+                            
+                            // Sign in with native plugin
+                            console.log("   Calling GoogleAuth.signIn()...");
+                            const googleUser = await GoogleAuth.signIn();
+                            console.log("✅ Native Google Sign-In successful!");
+                            console.log("   Google User:", JSON.stringify(googleUser, null, 2));
+                            
+                            // Check if we have the authentication object
+                            if (!googleUser || !googleUser.authentication || !googleUser.authentication.idToken) {
+                                throw new Error("No ID token received from Google Sign-In");
+                            }
+                            
+                            // Get the ID token from the native plugin
+                            const idToken = googleUser.authentication.idToken;
+                            console.log("   ID Token received (length):", idToken.length);
+                            
+                            // Create Firebase credential with the ID token
+                            console.log("   Creating Firebase credential...");
+                            const credential = GoogleAuthProvider.credential(idToken);
+                            
+                            // Sign in to Firebase with the credential
+                            console.log("   Signing in to Firebase...");
+                            const result = await signInWithCredential(auth, credential);
+                            
+                            console.log("✅ Firebase authentication successful!");
+                            console.log("   User:", result.user.email);
+                            console.log("   Photo:", result.user.photoURL);
+                            console.log("   Name:", result.user.displayName);
+                            
+                            // Save profile data
+                            localStorage.setItem(savedEmailKey, result.user.email);
+                            localStorage.setItem('signInMethod', 'google');
+                            if (result.user.photoURL) {
+                                localStorage.setItem('userProfilePicture', result.user.photoURL);
+                            }
+                            if (result.user.displayName) {
+                                localStorage.setItem('userDisplayName', result.user.displayName);
+                            }
+                            
+                            // onAuthStateChanged will handle the rest
+                        } catch (nativeError) {
+                            console.error("❌ Native Google Sign-In failed:", nativeError);
+                            console.error("   Error type:", typeof nativeError);
+                            console.error("   Error code:", nativeError.code);
+                            console.error("   Error message:", nativeError.message);
+                            console.error("   Full error:", JSON.stringify(nativeError, null, 2));
+                            showLoading(false);
+                            // Do NOT use redirect on native - it opens browser and goes to localhost (site unreachable)
+                            const isCode10 = nativeError && (nativeError.code === '10' || nativeError.code === 10);
+                            if (isCode10) {
+                                const msg = 'Google Sign-In not configured. Add your app\'s SHA-1 in Google Cloud Console → Credentials → Create OAuth client (Android). Package: com.yourdomain.salahdiary';
+                                if (signupErrorEl) signupErrorEl.textContent = msg;
+                                if (loginErrorEl) loginErrorEl.textContent = msg;
+                            } else {
+                                const msg = 'Google Sign-In failed. Please try again or use Email/Password.';
+                                if (signupErrorEl) signupErrorEl.textContent = msg;
+                                if (loginErrorEl) loginErrorEl.textContent = msg;
+                            }
+                            return;
+                        }
+                    } else {
+                        // WEB: Use Firebase popup (fallback for web/testing)
+                        console.log("🌐 Using web popup for Google Sign-In");
+                        const provider = new GoogleAuthProvider();
+                        const result = await signInWithPopup(auth, provider);
+                        
+                        console.log("✅ Google Sign-In successful!");
+                        console.log("   User:", result.user.email);
+                        console.log("   Photo:", result.user.photoURL);
+                        console.log("   Name:", result.user.displayName);
+                        
+                        // Save profile data
+                        localStorage.setItem(savedEmailKey, result.user.email);
+                        localStorage.setItem('signInMethod', 'google');
+                        if (result.user.photoURL) {
+                            localStorage.setItem('userProfilePicture', result.user.photoURL);
+                        }
+                        if (result.user.displayName) {
+                            localStorage.setItem('userDisplayName', result.user.displayName);
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.error("❌ Google Sign-In Error:", error);
+                    console.error("   Error type:", typeof error);
+                    console.error("   Error code:", error.code);
+                    console.error("   Error message:", error.message);
+                    
+                    let errorMessage = 'Google Sign-In failed.';
+                    
+                    // Handle native plugin errors (Error 10 = SHA-1 / OAuth not set in Google Cloud)
+                    if (error.code === '10' || error.code === 10) {
+                        errorMessage = 'Google Sign-In not set up. Add app SHA-1 in Google Cloud Console → Credentials → Android OAuth client (package: com.yourdomain.salahdiary).';
+                        console.error("   This is error code 10 - OAuth configuration issue (SHA-1 / Android client)");
+                    } else if (error.code === '12501' || error.code === 12501) {
+                        errorMessage = 'Sign-in cancelled.';
+                    } else if (error.message && error.message.includes('No ID token')) {
+                        errorMessage = 'Authentication failed. Please try again.';
+                    } else if (error.code) {
+                        // Firebase errors
+                        switch (error.code) {
+                            case 'auth/popup-closed-by-user':
+                            case 'auth/cancelled-popup-request':
+                                errorMessage = 'Sign-in cancelled.';
+                                break;
+                            case 'auth/popup-blocked':
+                                errorMessage = 'Pop-up blocked. Please allow pop-ups.';
+                                break;
+                            case 'auth/network-request-failed':
+                                errorMessage = 'Network error. Check your connection.';
+                                break;
+                            case 'auth/account-exists-with-different-credential':
+                                errorMessage = 'Account exists with different sign-in method.';
+                                break;
+                            default:
+                                errorMessage = `Sign-in failed: ${error.message || 'Unknown error'}`;
+                                break;
+                        }
+                    } else {
+                        errorMessage = `Sign-in failed: ${error.message || 'Unknown error'}`;
+                    }
+                    
+                    if (signupErrorEl) signupErrorEl.textContent = errorMessage;
+                    if (loginErrorEl) loginErrorEl.textContent = errorMessage;
+                    
+                    showLoading(false);
+                }
             };
 
             // --- APP LOGIC ---
@@ -4129,7 +4564,9 @@
                         startLiveUpdates(); // Start the countdown timer etc.
 
                         // Schedule prayer notifications if enabled
+                        // *** IMPROVED: Always reschedule to ensure notifications are up-to-date ***
                         if (appState.user.data.settings.notifications) {
+                            console.log("🔔 Scheduling notifications after prayer times fetch...");
                             schedulePrayerNotifications();
                         }
 
@@ -4510,21 +4947,24 @@
 
             // Cleanup function for memory management
             function cleanupEventListeners() {
+                const homeTabContent = document.getElementById('home-tab-content');
                 if (homeTabContent) {
                     homeTabContent.removeEventListener('touchstart', null);
                     homeTabContent.removeEventListener('touchmove', null);
                     homeTabContent.removeEventListener('touchend', null);
                     homeTabContent.removeEventListener('touchcancel', null);
                 }
-                if (orientationListenerAdded) {
+                if (typeof orientationListenerAdded !== 'undefined' && orientationListenerAdded) {
                     stopOrientationListener();
                 }
-                if (appState.liveInterval) {
+                if (appState && appState.liveInterval) {
                     clearInterval(appState.liveInterval);
                 }
                 
                 // *** NEW: Cleanup charts to prevent memory leaks ***
-                cleanupCharts();
+                if (typeof cleanupCharts === 'function') {
+                    cleanupCharts();
+                }
             }
             
             // *** NEW: Chart cleanup function ***
@@ -4971,33 +5411,34 @@
                                 }
                                 endDate.setHours(endHours, endMinutes, 0, 0);
 
-                                // Skip if prayer time has already passed
-                                if (prayerDate > new Date()) {
-                                    // Check if it's Friday and Dhuhr prayer for Jummah
-                                    const isFridayDhuhr = (prayer === 'Dhuhr' && targetDate.getDay() === 5);
-                                    const prayerDisplayName = isFridayDhuhr ? 'Jummah' : prayer;
-                                    const prayerEmoji = isFridayDhuhr ? '🕌' : '🕐';
+                                const now = new Date();
+                                
+                                // Check if it's Friday and Dhuhr prayer for Jummah
+                                const isFridayDhuhr = (prayer === 'Dhuhr' && targetDate.getDay() === 5);
+                                const prayerDisplayName = isFridayDhuhr ? 'Jummah' : prayer;
+                                const prayerEmoji = isFridayDhuhr ? '🕌' : '🕐';
 
-                                    // Unique ID based on day and prayer
-                                    const baseId = (dayOffset * 100) + prayerIndex + 1;
+                                // Unique ID based on day and prayer
+                                const baseId = (dayOffset * 100) + prayerIndex + 1;
 
-                                    // 1. 5 minutes before prayer
-                                    const fiveMinBefore = new Date(prayerDate.getTime() - 5 * 60 * 1000);
-                                    if (fiveMinBefore > new Date()) {
-                                        notifications.push({
-                                            title: `${prayerDisplayName} Starting Soon`,
-                                            body: `${prayerDisplayName} ${isFridayDhuhr ? 'is' : 'prayer is'} starting in 5 minutes ${prayerEmoji}`,
-                                            id: 1000 + baseId,
-                                            schedule: { at: fiveMinBefore },
-                                            sound: 'default',
-                                            smallIcon: 'notification_logo',
-                                            largeIcon: 'ic_launcher_round',
-                                            channelId: 'prayer_notifications',
-                                            autoCancel: true
-                                        });
-                                    }
+                                // 1. 5 minutes before prayer
+                                const fiveMinBefore = new Date(prayerDate.getTime() - 5 * 60 * 1000);
+                                if (fiveMinBefore > now) {
+                                    notifications.push({
+                                        title: `${prayerDisplayName} Starting Soon`,
+                                        body: `${prayerDisplayName} ${isFridayDhuhr ? 'is' : 'prayer is'} starting in 5 minutes ${prayerEmoji}`,
+                                        id: 1000 + baseId,
+                                        schedule: { at: fiveMinBefore },
+                                        sound: 'default',
+                                        smallIcon: 'notification_logo',
+                                        largeIcon: 'ic_launcher_round',
+                                        channelId: 'prayer_notifications',
+                                        autoCancel: true
+                                    });
+                                }
 
-                                    // 2. At prayer time
+                                // 2. At prayer time - Schedule if prayer time hasn't passed yet
+                                if (prayerDate > now) {
                                     notifications.push({
                                         title: `${prayerDisplayName} Time`,
                                         body: `${prayerDisplayName} has started - ${isFridayDhuhr ? 'Go to mosque!' : 'Pray in time!'} 🕌`,
@@ -5009,23 +5450,23 @@
                                         channelId: 'prayer_notifications',
                                         autoCancel: true
                                     });
+                                }
 
-                                    // 3. 10 minutes before end (except for Isha)
-                                    if (prayer !== 'Isha') {
-                                        const tenMinBeforeEnd = new Date(endDate.getTime() - 10 * 60 * 1000);
-                                        if (tenMinBeforeEnd > prayerDate && tenMinBeforeEnd > new Date()) {
-                                            notifications.push({
-                                                title: `${prayerDisplayName} Ending Soon`,
-                                                body: `${prayerDisplayName} ${isFridayDhuhr ? 'is' : 'prayer is'} ending in 10 minutes ⏰`,
-                                                id: 3000 + baseId,
-                                                schedule: { at: tenMinBeforeEnd },
-                                                sound: 'default',
-                                                smallIcon: 'notification_logo',
-                                                largeIcon: 'ic_launcher_round',
-                                                channelId: 'prayer_notifications',
-                                                autoCancel: true
-                                            });
-                                        }
+                                // 3. 10 minutes before end (except for Isha)
+                                if (prayer !== 'Isha') {
+                                    const tenMinBeforeEnd = new Date(endDate.getTime() - 10 * 60 * 1000);
+                                    if (tenMinBeforeEnd > prayerDate && tenMinBeforeEnd > now) {
+                                        notifications.push({
+                                            title: `${prayerDisplayName} Ending Soon`,
+                                            body: `${prayerDisplayName} ${isFridayDhuhr ? 'is' : 'prayer is'} ending in 10 minutes ⏰`,
+                                            id: 3000 + baseId,
+                                            schedule: { at: tenMinBeforeEnd },
+                                            sound: 'default',
+                                            smallIcon: 'notification_logo',
+                                            largeIcon: 'ic_launcher_round',
+                                            channelId: 'prayer_notifications',
+                                            autoCancel: true
+                                        });
                                     }
                                 }
                             }
@@ -5054,8 +5495,14 @@
                         await LocalNotifications.schedule({ notifications });
                         console.log(`✅ Scheduled ${notifications.length} prayer notifications for next 30 days`);
                         console.log(`   📅 Coverage: ${new Date().toLocaleDateString()} to ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}`);
+                        
+                        // Log first few notifications for debugging
+                        console.log("📋 Sample notifications:");
+                        notifications.slice(0, 5).forEach(n => {
+                            console.log(`   - ${n.title} at ${n.schedule.at.toLocaleString()}`);
+                        });
                     } else {
-                        console.log("No prayer notifications to schedule");
+                        console.log("⚠️ No prayer notifications to schedule (all times may have passed)");
                     }
                 } catch (error) {
                     console.error("Error scheduling prayer notifications:", error);
@@ -5670,12 +6117,82 @@
                 updateDashboard(); // Re-run dashboard update to apply new gradients/text colors
             }
 
+            // --- HELPER: Generate Initials Avatar ---
+            function generateInitialsAvatar(name, size = 60) {
+                // Get initials (first letter of first two words)
+                const words = name.trim().split(/\s+/);
+                let initials = '';
+                if (words.length >= 2) {
+                    initials = words[0][0] + words[1][0];
+                } else if (words.length === 1 && words[0].length > 0) {
+                    initials = words[0][0];
+                }
+                initials = initials.toUpperCase();
+                
+                // App theme colors - purple variations matching the app design
+                const colors = [
+                    ['#9333ea', '#7c3aed'], // Primary purple (matches --primary-purple)
+                    ['#a855f7', '#9333ea'], // Light purple (matches --light-purple)
+                    ['#7c3aed', '#6d28d9'], // Deep purple
+                    ['#8b5cf6', '#7c3aed'], // Medium purple
+                    ['#a78bfa', '#8b5cf6'], // Soft purple
+                    ['#c084fc', '#a855f7'], // Light violet
+                    ['#9333ea', '#a855f7'], // Purple gradient
+                    ['#7c3aed', '#a855f7'], // Purple range
+                ];
+                
+                // Use name hash to pick color consistently
+                let hash = 0;
+                for (let i = 0; i < name.length; i++) {
+                    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                const colorIndex = Math.abs(hash) % colors.length;
+                const [color1, color2] = colors[colorIndex];
+                
+                const fontSize = Math.floor(size * 0.45);
+                
+                return `<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, ${color1} 0%, ${color2} 100%); font-size: ${fontSize}px; font-weight: 600; color: white; letter-spacing: 1px;">${initials}</div>`;
+            }
+
             function loadSettings() {
                 if (!appState.user.details || !userEmailDisplay || !notificationToggle || !calculationMethodSelect || !themeToggle) {
                     console.error("Cannot load settings: User not loaded or UI elements missing.");
                     return;
                 }
+                
+                // Load email
                 userEmailDisplay.textContent = appState.user.details.email || 'No Email';
+                
+                // Load display name
+                if (settingsDisplayName) {
+                    const displayName = appState.user.data.displayName || 
+                                       appState.user.details.displayName || 
+                                       appState.user.details.email?.split('@')[0] || 
+                                       'User';
+                    settingsDisplayName.textContent = displayName;
+                }
+                
+                // Load profile picture (referrerpolicy needed for Google image URLs)
+                if (settingsProfilePicture) {
+                    const profilePicture = appState.user.data.profilePicture || 
+                                          appState.user.details.photoURL ||
+                                          localStorage.getItem('userProfilePicture');
+                    
+                    const displayName = appState.user.data.displayName || 
+                                       appState.user.details.displayName || 
+                                       appState.user.details.email?.split('@')[0] || 
+                                       'User';
+                    
+                    if (profilePicture) {
+                        // Show actual profile picture with initials fallback
+                        const fallbackAvatar = generateInitialsAvatar(displayName, 60).replace(/'/g, "\\'");
+                        settingsProfilePicture.innerHTML = `<img src="${profilePicture}" alt="Profile" referrerpolicy="no-referrer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;" onerror="this.onerror=null; this.parentElement.innerHTML='${fallbackAvatar}';">`;
+                    } else {
+                        // Show initials-based avatar
+                        settingsProfilePicture.innerHTML = generateInitialsAvatar(displayName, 60);
+                    }
+                }
+                
                 notificationToggle.checked = appState.user.data.settings.notifications;
                 calculationMethodSelect.value = appState.user.data.settings.calculationMethod;
                 applyTheme(appState.user.data.settings.theme); // This also sets the toggle state
@@ -6141,6 +6658,10 @@
 
             if (authNextBtn) authNextBtn.addEventListener('click', handleAuth);
 
+            // Google Sign-In Event Listeners
+            if (googleSignupBtn) googleSignupBtn.addEventListener('click', handleGoogleSignIn);
+            if (googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleSignIn);
+
             // Notification Permission Screen
             if (skipNotificationBtn) skipNotificationBtn.addEventListener('click', () => {
                 appState.user.data.settings.notifications = false;
@@ -6295,6 +6816,12 @@
                     showScreen('main-app-screen');
                     setActiveTab('home');
                     showLoading(false);
+
+                    // Mark onboarding as completed for new users
+                    if (!appState.isChangingLocation) {
+                        localStorage.setItem('onboardingCompleted', 'true');
+                        console.log("✅ Onboarding completed - flag set");
+                    }
 
                     // Start guided tour for first-time users (only during onboarding, not location changes)
                     if (!appState.isChangingLocation) {
@@ -6467,6 +6994,12 @@
                                         setActiveTab('home');
                                         if (locationSearchInput) locationSearchInput.value = ''; // Clear search
                                         if (searchResultsList) searchResultsList.innerHTML = ''; // Clear results
+
+                                        // Mark onboarding as completed for new users
+                                        if (!appState.isChangingLocation) {
+                                            localStorage.setItem('onboardingCompleted', 'true');
+                                            console.log("✅ Onboarding completed - flag set");
+                                        }
 
                                         // Start guided tour for first-time users (only during onboarding, not location changes)
                                         if (!appState.isChangingLocation) {
@@ -6995,16 +7528,25 @@
             if (continueAsBtn) {
                 continueAsBtn.addEventListener('click', () => {
                     const savedEmail = localStorage.getItem(savedEmailKey);
+                    const signInMethod = localStorage.getItem('signInMethod');
+                    
                     if (savedEmail) {
-                        if (continueAsContainer) continueAsContainer.style.display = 'none';
-                        if (signupForm) signupForm.classList.remove('active');
+                        // If user signed in with Google, trigger Google Sign-In directly
+                        if (signInMethod === 'google') {
+                            console.log("🔄 User previously signed in with Google, triggering Google Sign-In...");
+                            handleGoogleSignIn();
+                        } else {
+                            // User signed in with email/password, show login form
+                            if (continueAsContainer) continueAsContainer.style.display = 'none';
+                            if (signupForm) signupForm.classList.remove('active');
 
-                        if (loginForm) loginForm.classList.add('active');
-                        if (loginEmailInput) loginEmailInput.value = savedEmail;
-                        if (loginPasswordInput) loginPasswordInput.focus(); // Focus password
+                            if (loginForm) loginForm.classList.add('active');
+                            if (loginEmailInput) loginEmailInput.value = savedEmail;
+                            if (loginPasswordInput) loginPasswordInput.focus(); // Focus password
 
-                        if (authFooter) authFooter.style.display = 'block';
-                        if (authNextBtn) authNextBtn.textContent = 'Log In';
+                            if (authFooter) authFooter.style.display = 'block';
+                            if (authNextBtn) authNextBtn.textContent = 'Log In';
+                        }
                     }
                 });
             }

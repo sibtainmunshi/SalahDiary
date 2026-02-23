@@ -13,5 +13,6 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(com.capacitorjs.plugins.geolocation.GeolocationPlugin.class);
         registerPlugin(com.capacitorjs.plugins.localnotifications.LocalNotificationsPlugin.class);
         registerPlugin(com.capacitorjs.plugins.pushnotifications.PushNotificationsPlugin.class);
+        registerPlugin(com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth.class);
     }
 }

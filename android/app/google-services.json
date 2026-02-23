@@ -14,7 +14,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "433228794223-n88ibai5oh1pm8s2niomquju1i6ugoc1.apps.googleusercontent.com",
+          "client_id": "433228794223-d9q3rppcvae2o6fmsrpvaoithj9q9sud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourdomain.salahdiary",
+            "certificate_hash": "55266c1c9a483c502b22b549caa39d2c6a2a51a3"
+          }
+        },
+        {
+          "client_id": "433228794223-n57iclus0k5850rtov2ctrllfpbhel0u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourdomain.salahdiary",
+            "certificate_hash": "a064462044aa3399968942ab2f763148aef54182"
+          }
+        },
+        {
+          "client_id": "433228794223-mf6he8m4vieqqfenq309v4o5v8bk4b2r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +43,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "433228794223-n88ibai5oh1pm8s2niomquju1i6ugoc1.apps.googleusercontent.com",
+              "client_id": "433228794223-ki10es4i89gf5usjfahh8b5uhmbnltuh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
