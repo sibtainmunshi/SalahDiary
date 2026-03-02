@@ -6,6 +6,16 @@ First off, thank you for considering contributing to Salah Diary! It's people li
 
 This project and everyone participating in it is governed by respect, kindness, and the Islamic principles of good conduct. By participating, you are expected to uphold these values.
 
+## Important: License and Copyright
+
+This project is licensed under **CC BY-NC-ND 4.0** which means:
+- You can view and learn from the code
+- You can report bugs and suggest features
+- You CANNOT distribute modified versions
+- You CANNOT use it commercially
+
+All contributions become part of the project under the same license.
+
 ## How Can I Contribute?
 
 ### Reporting Bugs

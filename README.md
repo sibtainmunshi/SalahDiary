@@ -2,7 +2,7 @@
 
 **Never miss a prayer again.** Track your daily prayers, build consistency, and strengthen your spiritual journey with Salah Diary - a beautiful, modern prayer tracking app for Muslims.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com/)
 [![Built with Capacitor](https://img.shields.io/badge/Built%20with-Capacitor-blue.svg)](https://capacitorjs.com/)
 
@@ -187,7 +187,19 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License**.
+
+**What this means:**
+- ✅ You can use the app for free
+- ✅ You can share it with others
+- ✅ You can view and learn from the code
+- ❌ You cannot sell it or use it commercially
+- ❌ You cannot modify and distribute it
+- ❌ You must give credit to the original author
+
+See the [LICENSE](LICENSE) file for full details.
+
+For commercial use or modifications, please contact the author.
 
 ## 🙏 Acknowledgments
 
