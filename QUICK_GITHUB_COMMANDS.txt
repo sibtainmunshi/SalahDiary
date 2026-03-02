@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════════════════════
+  🚀 SALAH DIARY - GITHUB PUSH COMMANDS (COPY & PASTE)
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Create Repository on GitHub
+────────────────────────────────────
+Go to: https://github.com/new
+Name: SalahDiary
+Description: A beautiful prayer tracking app for Muslims
+Public/Private: Choose one
+DO NOT check any boxes
+Click "Create repository"
+
+
+STEP 2: Copy These Commands
+────────────────────────────────────
+Replace YOUR_USERNAME with your GitHub username!
+
+# Add remote repository
+git remote add origin https://github.com/YOUR_USERNAME/SalahDiary.git
+
+# Verify remote
+git remote -v
+
+# Push to GitHub
+git push -u origin main
+
+
+If branch error, use:
+────────────────────────────────────
+git branch -M main
+git push -u origin main
+
+
+STEP 3: Authentication
+────────────────────────────────────
+Username: YOUR_GITHUB_USERNAME
+Password: YOUR_PERSONAL_ACCESS_TOKEN (not your password!)
+
+Get token: https://github.com/settings/tokens
+- Click "Generate new token (classic)"
+- Name: "SalahDiary"
+- Check: "repo"
+- Generate and COPY the token
+
+
+STEP 4: Verify
+────────────────────────────────────
+Go to: https://github.com/YOUR_USERNAME/SalahDiary
+Refresh page - you should see all files!
+
+
+BONUS: Enable GitHub Pages
+────────────────────────────────────
+Settings → Pages → Source: main → Folder: /website → Save
+Website will be live at:
+https://YOUR_USERNAME.github.io/SalahDiary/
+
+
+═══════════════════════════════════════════════════════════════
+  ✅ DONE! Your app is now on GitHub!
+═══════════════════════════════════════════════════════════════
