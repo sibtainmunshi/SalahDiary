@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salah Diary - Track Your Prayers, Build Your Streak</title>
+    <meta name="description" content="Never miss a prayer with Salah Diary. Smart notifications, beautiful tracking, prayer diary, statistics, and Qibla compass. Free for Android.">
+    <meta name="keywords" content="salah diary, prayer tracker, islamic app, namaz reminder, qibla compass, prayer times">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-mosque"></i>
+                    <span>Salah Diary</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#screenshots">Screenshots</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#download" class="btn-primary">Download</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenuBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Track Your Prayers, Build Your Streak</h1>
+                    <p class="hero-subtitle">Never miss a prayer again with smart notifications, beautiful tracking, and insightful statistics</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn-primary btn-large">
+                            <i class="fab fa-android"></i>
+                            Download for Android
+                        </a>
+                        <a href="#features" class="btn-secondary btn-large">
+                            <i class="fas fa-arrow-down"></i>
+                            View Features
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>100% Free</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Ads</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-wifi"></i>
+                            <span>Works Offline</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <img src="images/app-home.png" alt="Salah Diary App" class="app-screenshot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-pattern"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need to Track Your Prayers</h2>
+                <p>Powerful features designed to help you maintain consistency in your prayers</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Never Miss a Prayer</h3>
+                    <p>Get notified 5 minutes before, at prayer time, and 10 minutes before it ends. Works perfectly with Android 12+ exact alarms.</p>
+                    <div class="feature-highlight">30 days of notifications scheduled automatically</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Track Your Progress</h3>
+                    <p>Mark prayers as Prayed, Qaza, or Missed. See your daily progress with beautiful visual indicators and real-time countdown.</p>
+                    <div class="feature-highlight">Traffic light system shows prayer status</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Your Prayer Diary</h3>
+                    <p>Keep a complete record of all your prayers. View daily summaries with color-coded status and track consistency over time.</p>
+                    <div class="feature-highlight">Month and week view available</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Visualize Your Journey</h3>
+                    <p>See your prayer streak, monthly goals, and beautiful heatmap showing your prayer consistency. Track your spiritual growth.</p>
+                    <div class="feature-highlight">GitHub-style contribution heatmap</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3>Find Qibla Direction</h3>
+                    <p>Built-in compass with real-time orientation to help you find the Qibla direction anywhere in the world. Works offline.</p>
+                    <div class="feature-highlight">Visual alignment indicator</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3>Hanafi & Shafi Support</h3>
+                    <p>Choose your madhab during setup. App automatically calculates prayer times according to your selected school of thought.</p>
+                    <div class="feature-highlight">Accurate prayer times for your location</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Works Offline</h3>
+                    <p>All your data is cached locally. Track prayers, view diary, and check Qibla direction even without internet connection.</p>
+                    <div class="feature-highlight">Seamless offline experience</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Beautiful Themes</h3>
+                    <p>Switch between elegant dark mode and clean light mode. Smooth animations and modern glassmorphism design.</p>
+                    <div class="feature-highlight">Easy on the eyes, day or night</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2>See Salah Diary in Action</h2>
+                <p>Beautiful, intuitive interface designed for daily use</p>
+            </div>
+            <div class="screenshots-slider">
+                <button class="slider-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="screenshots-container" id="screenshotsContainer">
+                    <div class="screenshot-item">
+                        <img src="images/screenshot-home.png" alt="Home Screen">
+                        <p>Home - Prayer Times & Countdown</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="images/screenshot-diary.png" alt="Diary View">
+                        <p>Diary - Monthly Prayer Tracking</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="images/screenshot-stats.png" alt="Statistics">
+                        <p>Statistics - Streak & Heatmap</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="images/screenshot-qibla.png" alt="Qibla Compass">
+                        <p>Qibla - Compass Direction</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="images/screenshot-settings.png" alt="Settings">
+                        <p>Settings - Themes & Preferences</p>
+                    </div>
+                </div>
+                <button class="slider-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in 3 Simple Steps</h2>
+                <p>Start tracking your prayers in less than a minute</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Set Your Location</h3>
+                    <p>Allow location access or search for your city to get accurate prayer times based on your location</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3>Choose Your Madhab</h3>
+                    <p>Select Hanafi or Shafi for accurate prayer time calculations according to your school of thought</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Start Tracking</h3>
+                    <p>Get notifications and mark your prayers throughout the day. Build your streak and track your progress!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Salah Diary?</h2>
+                <p>Built with care for the Muslim community</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-gift"></i>
+                    <h4>100% Free</h4>
+                    <p>No ads, no subscriptions, completely free forever</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-lock"></i>
+                    <h4>Privacy First</h4>
+                    <p>Your data is yours, stored securely with Firebase</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Offline Support</h4>
+                    <p>Works without internet after initial setup</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-battery-three-quarters"></i>
+                    <h4>Battery Friendly</h4>
+                    <p>Optimized for minimal battery usage</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-sync"></i>
+                    <h4>Regular Updates</h4>
+                    <p>Continuously improved based on user feedback</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-feather"></i>
+                    <h4>No Bloat</h4>
+                    <p>Clean, focused app with only essential features</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section class="tech-specs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Details</h2>
+                <p>Everything you need to know before downloading</p>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <i class="fab fa-android"></i>
+                    <h4>Platform</h4>
+                    <p>Android 8.0 (Oreo) and above</p>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-download"></i>
+                    <h4>Size</h4>
+                    <p>~16 MB APK file</p>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Permissions</h4>
+                    <p>Location, Notifications, Alarms</p>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-language"></i>
+                    <h4>Languages</h4>
+                    <p>English (Urdu coming soon)</p>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-cloud"></i>
+                    <h4>Backend</h4>
+                    <p>Firebase (Auth, Firestore)</p>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Prayer Times</h4>
+                    <p>Aladhan API</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Got questions? We've got answers</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is Salah Diary really free?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Salah Diary is completely free with no ads, no in-app purchases, and no subscriptions. We built this app for the Muslim community as a service to help everyone maintain their prayers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does it work offline?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! After initial setup, you can track prayers, view your diary, and use the Qibla compass completely offline. Your data is cached locally and syncs when you're back online.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Which Android versions are supported?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Salah Diary works on Android 8.0 (Oreo) and above. For best experience with exact prayer time notifications, we recommend Android 12 or higher.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Why do I need to disable battery optimization?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>To ensure prayer notifications work reliably, especially on Xiaomi, Oppo, Samsung, and other devices with aggressive battery management. The app will guide you through the process with manufacturer-specific instructions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I backup my data?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Your data is automatically synced to Firebase cloud storage. You can access your prayer history from any device after logging in with your account.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my data private?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! Your prayer data is stored securely in Firebase and is only accessible to you. We don't share, sell, or use your data for any purpose other than providing the app functionality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>Download Salah Diary Today</h2>
+                <p>Join thousands of Muslims tracking their prayers</p>
+                <div class="download-box">
+                    <div class="download-info">
+                        <div class="info-item">
+                            <i class="fas fa-file-archive"></i>
+                            <span>Size: 15.9 MB</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Version: 1.0</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Updated: Feb 2026</span>
+                        </div>
+                    </div>
+                    <a href="downloads/salah-diary-v1.0.apk" class="btn-download" download>
+                        <i class="fab fa-android"></i>
+                        Download APK for Android
+                    </a>
+                    <p class="download-note">Not on Play Store yet. Install APK directly.</p>
+                </div>
+                <div class="installation-steps">
+                    <h3>Installation Instructions</h3>
+                    <ol>
+                        <li>Download the APK file</li>
+                        <li>Enable "Install from Unknown Sources" in Settings</li>
+                        <li>Open the APK and install</li>
+                        <li>Grant required permissions</li>
+                        <li>Start tracking your prayers!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-mosque"></i>
+                        <span>Salah Diary</span>
+                    </div>
+                    <p>Track Your Prayers, Build Your Streak, Strengthen Your Faith</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Salah Diary. All rights reserved. Made with ❤️ for the Muslim Ummah</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

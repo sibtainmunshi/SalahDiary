@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2337,37 +2338,151 @@
             background-repeat: no-repeat;
             background-position: right 12px center;
             padding-right: 40px;
+            accent-color: var(--primary-purple);
         }
 
         .settings-item select:hover {
             border-color: var(--primary-purple);
-            background: rgba(147, 51, 234, 0.15);
-            transform: translateY(-1px);
+            background-color: rgba(147, 51, 234, 0.12);
+            box-shadow: 0 2px 8px rgba(147, 51, 234, 0.15);
         }
 
         .settings-item select:focus {
             outline: none;
             border-color: var(--primary-purple);
-            background: rgba(147, 51, 234, 0.2);
-            box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.1);
+            background-color: rgba(147, 51, 234, 0.15);
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
         }
 
+        /* Dropdown options - themed to match app (where browser supports) */
         .settings-item select option {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
             padding: 12px;
             font-weight: 500;
         }
 
+        .settings-item select option:checked,
+        .settings-item select option:hover {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(147, 51, 234, 0.2));
+        }
+
         .light-theme .settings-item input[type="text"],
         .light-theme .settings-item select {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
         }
 
+        .light-theme .settings-item select:hover {
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+
+        .light-theme .settings-item select:focus {
+            background-color: rgba(139, 92, 246, 0.12);
+        }
+
         .light-theme .settings-item select option {
-            background-color: #ffffff;
-            color: #111827;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+        }
+
+        .light-theme .settings-item select option:checked {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.15));
+        }
+
+        /* Custom themed dropdown - replaces native select appearance */
+        .custom-dropdown-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+        }
+        .custom-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .custom-dropdown-trigger:hover {
+            border-color: var(--primary-purple);
+            background: rgba(147, 51, 234, 0.12);
+        }
+        .custom-dropdown-trigger i {
+            color: var(--primary-purple);
+            font-size: 12px;
+            margin-left: 8px;
+            transition: transform 0.2s;
+        }
+        .custom-dropdown-wrap.open .custom-dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+        .custom-dropdown-panel {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: var(--dark-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            z-index: 1000;
+            max-height: 240px;
+            overflow-y: auto;
+            display: none;
+        }
+        .custom-dropdown-wrap.open .custom-dropdown-panel {
+            display: block;
+        }
+        .custom-dropdown-option {
+            padding: 12px 15px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 1px solid var(--card-border);
+            transition: background 0.15s;
+        }
+        .custom-dropdown-option:last-child {
+            border-bottom: none;
+        }
+        .custom-dropdown-option:hover {
+            background: rgba(147, 51, 234, 0.15);
+        }
+        .custom-dropdown-option.selected {
+            background: rgba(147, 51, 234, 0.25);
+            color: var(--primary-purple);
+        }
+        .light-theme .custom-dropdown-trigger { background: rgba(255,255,255,0.9); }
+        .light-theme .custom-dropdown-panel {
+            background: #fff;
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .light-theme .custom-dropdown-option {
+            color: var(--text-primary);
+            border-color: rgba(0,0,0,0.08);
+        }
+        .light-theme .custom-dropdown-option:hover { background: rgba(139, 92, 246, 0.1); }
+        .light-theme .custom-dropdown-option.selected {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--primary-purple);
+        }
+        .custom-dropdown-wrap select {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            width: 0;
+            height: 0;
         }
 
         .toggle-switch {
@@ -2655,11 +2770,6 @@
                 <h1 style="font-size: 32px; font-weight: 800; margin: 15px 0 8px 0;">Salah Diary</h1>
                 <p style="color: var(--text-secondary); margin-top: 0; margin-bottom: 40px; font-size: 16px;">Track,
                     reflect, and build your prayer habit.</p>
-                
-                <!-- Version Indicator -->
-                <div style="position: absolute; top: 20px; right: 20px; background: var(--primary-purple); color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">
-                    v3.1 - AndroidID
-                </div>
                 
                 <h2 class="quote-question">Which deed is dearest to Allah?</h2>
                 <p class="quote-answer">"The Prophet (ﷺ) said, 'The most beloved of deeds to Allah are the most
@@ -3049,12 +3159,12 @@
                 <div class="settings-section glass-card">
                     <h3>Profile</h3>
                     <div style="display: flex; align-items: center; gap: 15px; padding: 10px 0;">
-                        <div id="settings-profile-picture" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; position: relative; background: rgba(147, 51, 234, 0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(147, 51, 234, 0.3);">
-                            <i class="fas fa-user" style="font-size: 26px; color: var(--primary-purple);"></i>
+                        <div id="settings-profile-picture" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; position: relative; background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(147, 51, 234, 0.25);">
+                            <span style="font-size: 24px; font-weight: 600; color: white; letter-spacing: 0.5px;">U</span>
                         </div>
                         <div style="flex: 1; min-width: 0; text-align: left;">
                             <div id="settings-display-name" style="font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">User</div>
-                            <div id="user-email-display" style="font-size: 13px; color: var(--text-secondary);">loading...</div>
+                            <div id="user-email-display" style="font-size: 13px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">loading...</div>
                         </div>
                     </div>
                 </div>
@@ -3236,6 +3346,22 @@
                     <input type="email" id="forgot-password-email" placeholder="Email Address" autocomplete="off">
                 </div>
                 <div id="forgot-password-message" class=""></div> <!-- For success/error messages -->
+                
+                <!-- Helpful tip for users -->
+                <div style="margin-top: 15px; padding: 12px; background: rgba(147, 51, 234, 0.1); 
+                     border-left: 3px solid var(--primary-purple); border-radius: 8px;">
+                    <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                        💡 <strong>Quick Tip:</strong> Having trouble with email? 
+                        <span style="color: var(--primary-purple); cursor: pointer; font-weight: 600;" 
+                              onclick="document.getElementById('forgot-password-modal').classList.remove('active'); 
+                                       document.getElementById('auth-screen').classList.add('active'); 
+                                       document.getElementById('login-form').classList.add('active'); 
+                                       document.getElementById('signup-form').classList.remove('active');">
+                            Use "Continue with Google"
+                        </span> to sign in instantly!
+                    </p>
+                </div>
+                
                 <div class="modal-buttons">
                     <button class="btn btn-primary" id="send-reset-link-btn">Send Link</button>
                     <button class="btn btn-secondary" id="cancel-reset-btn">Cancel</button>
@@ -5262,43 +5388,144 @@
 
             // Prayer Notification System - 30 DAYS SCHEDULING
             async function schedulePrayerNotifications() {
+                console.log("🔔 schedulePrayerNotifications() called");
+                
                 if (!window.Capacitor || !window.Capacitor.Plugins || !window.Capacitor.Plugins.LocalNotifications) {
-                    console.log("Capacitor LocalNotifications not available");
+                    console.error("❌ Capacitor LocalNotifications not available");
+                    alert("Notification system not available. Please reinstall the app.");
                     return;
                 }
 
                 const { LocalNotifications } = Capacitor.Plugins;
 
                 try {
+                    console.log("📱 Platform:", Capacitor.getPlatform());
+                    
+                    // CRITICAL: Check battery optimization first
+                    if (Capacitor.getPlatform() === 'android') {
+                        try {
+                            const BatteryOptimization = Capacitor.Plugins.BatteryOptimization;
+                            if (BatteryOptimization) {
+                                // Get device manufacturer
+                                const manufacturerResult = await BatteryOptimization.getManufacturer();
+                                const manufacturer = manufacturerResult.value;
+                                console.log("📱 Device manufacturer:", manufacturer);
+                                
+                                // Check battery optimization status
+                                const batteryResult = await BatteryOptimization.isIgnoringBatteryOptimizations();
+                                console.log("🔋 Battery optimization ignored:", batteryResult.value);
+                                
+                                if (!batteryResult.value) {
+                                    console.warn("⚠️ Battery optimization is enabled - notifications may not work reliably");
+                                    
+                                    // Show manufacturer-specific warning
+                                    let warningMessage = "⚠️ Battery optimization is enabled.\n\n";
+                                    
+                                    if (manufacturer.includes("xiaomi") || manufacturer.includes("redmi") || manufacturer.includes("poco")) {
+                                        warningMessage += "For Xiaomi/Redmi/Poco:\n1. Disable battery optimization\n2. Enable 'Autostart'\n3. Lock app in recent apps\n\nWithout these, notifications won't work!";
+                                    } else if (manufacturer.includes("oppo") || manufacturer.includes("realme")) {
+                                        warningMessage += "For Oppo/Realme:\n1. Disable battery optimization\n2. Enable 'Startup Manager'\n3. Disable 'App Quick Freeze'\n\nWithout these, notifications won't work!";
+                                    } else if (manufacturer.includes("vivo")) {
+                                        warningMessage += "For Vivo:\n1. Disable battery optimization\n2. Enable 'Background running'\n3. Disable 'High background power consumption'\n\nWithout these, notifications won't work!";
+                                    } else if (manufacturer.includes("samsung")) {
+                                        warningMessage += "For Samsung:\n1. Disable battery optimization\n2. Disable 'Put app to sleep'\n3. Add to 'Never sleeping apps'\n\nWithout these, notifications won't work!";
+                                    } else if (manufacturer.includes("huawei") || manufacturer.includes("honor")) {
+                                        warningMessage += "For Huawei/Honor:\n1. Disable battery optimization\n2. Enable 'Manual management' in battery settings\n3. Lock app in recent apps\n\nWithout these, notifications won't work!";
+                                    } else {
+                                        warningMessage += "Please disable battery optimization for reliable notifications.\n\nTap OK to open settings.";
+                                    }
+                                    
+                                    alert(warningMessage);
+                                    
+                                    // Request battery optimization exemption
+                                    await BatteryOptimization.requestIgnoreBatteryOptimizations();
+                                    
+                                    // Check again after user returns
+                                    const recheckResult = await BatteryOptimization.isIgnoringBatteryOptimizations();
+                                    if (!recheckResult.value) {
+                                        console.error("❌ User did not disable battery optimization");
+                                        alert("⚠️ Battery optimization is still enabled.\n\nNotifications may not work reliably. You can disable it later in:\nSettings > Apps > Salah Diary > Battery > Unrestricted");
+                                    }
+                                }
+                            }
+                        } catch (error) {
+                            console.error("❌ Battery optimization check error:", error);
+                        }
+                    }
+                    
+                    // CRITICAL: Check exact alarm permission for Android 12+
+                    if (Capacitor.getPlatform() === 'android') {
+                        try {
+                            // Use custom plugin to check exact alarm permission
+                            const ExactAlarm = Capacitor.Plugins.ExactAlarm;
+                            if (ExactAlarm) {
+                                const result = await ExactAlarm.canScheduleExactAlarms();
+                                console.log("🔍 Can schedule exact alarms:", result.value);
+                                
+                                if (!result.value) {
+                                    console.warn("⚠️ Exact alarm permission not granted");
+                                    alert("⚠️ Prayer notifications require 'Alarms & reminders' permission.\n\nPlease enable it in the next screen for accurate prayer time notifications.");
+                                    
+                                    // Request permission
+                                    await ExactAlarm.requestExactAlarmPermission();
+                                    
+                                    // Check again after user returns
+                                    const recheckResult = await ExactAlarm.canScheduleExactAlarms();
+                                    if (!recheckResult.value) {
+                                        console.error("❌ User denied exact alarm permission");
+                                        alert("❌ Without 'Alarms & reminders' permission, prayer notifications may not work reliably.\n\nYou can enable it later in:\nSettings > Apps > Salah Diary > Alarms & reminders");
+                                        return;
+                                    }
+                                }
+                            }
+                        } catch (error) {
+                            console.error("❌ Exact alarm permission check error:", error);
+                        }
+                    }
+                    
                     // Always check permission before scheduling
+                    console.log("🔍 Requesting notification permissions...");
                     const permResult = await LocalNotifications.requestPermissions();
+                    console.log("📋 Permission result:", permResult);
+                    
                     if (permResult.display !== 'granted') {
-                        console.log("Notification permission not granted");
+                        console.error("❌ Notification permission not granted:", permResult);
+                        alert("⚠️ Notification permission denied. Please enable notifications in Settings > Apps > Salah Diary > Notifications");
+                        
                         // Update user settings to reflect denied permission
                         appState.user.data.settings.notifications = false;
                         if (notificationToggle) notificationToggle.checked = false;
                         await saveUserData(appState.user.details.uid);
                         return;
                     }
+                    
+                    console.log("✅ Notification permission granted");
 
                     // Create notification channel for Android
                     if (Capacitor.getPlatform() === 'android') {
-                        await LocalNotifications.createChannel({
-                            id: 'prayer_notifications',
-                            name: 'Prayer Notifications',
-                            description: 'Notifications for prayer times',
-                            importance: 5, // Max importance
-                            visibility: 1,
-                            sound: 'default',
-                            vibration: true,
-                            lights: true,
-                            lightColor: '#9333ea'
-                        });
+                        console.log("📢 Creating notification channel...");
+                        try {
+                            await LocalNotifications.createChannel({
+                                id: 'prayer_notifications',
+                                name: 'Prayer Notifications',
+                                description: 'Notifications for prayer times',
+                                importance: 5, // Max importance
+                                visibility: 1,
+                                sound: 'default',
+                                vibration: true,
+                                lights: true,
+                                lightColor: '#9333ea'
+                            });
+                            console.log("✅ Notification channel created");
+                        } catch (error) {
+                            console.error("❌ Channel creation error:", error);
+                        }
                     }
 
                     console.log("🔄 Scheduling notifications for next 30 days...");
 
                     // Clear ALL existing prayer notifications
+                    console.log("🗑️ Clearing old notifications...");
                     const notificationIds = [];
                     for (let day = 0; day < 30; day++) {
                         for (let prayer = 0; prayer < 5; prayer++) {
@@ -5492,20 +5719,35 @@
 
                     // Schedule all notifications
                     if (notifications.length > 0) {
-                        await LocalNotifications.schedule({ notifications });
-                        console.log(`✅ Scheduled ${notifications.length} prayer notifications for next 30 days`);
-                        console.log(`   📅 Coverage: ${new Date().toLocaleDateString()} to ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}`);
+                        console.log(`📤 Attempting to schedule ${notifications.length} notifications...`);
                         
-                        // Log first few notifications for debugging
-                        console.log("📋 Sample notifications:");
-                        notifications.slice(0, 5).forEach(n => {
-                            console.log(`   - ${n.title} at ${n.schedule.at.toLocaleString()}`);
-                        });
+                        try {
+                            await LocalNotifications.schedule({ notifications });
+                            console.log(`✅ Successfully scheduled ${notifications.length} prayer notifications for next 30 days`);
+                            console.log(`   📅 Coverage: ${new Date().toLocaleDateString()} to ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}`);
+                            
+                            // Log first few notifications for debugging
+                            console.log("📋 Sample notifications:");
+                            notifications.slice(0, 5).forEach(n => {
+                                console.log(`   - ${n.title} at ${n.schedule.at.toLocaleString()}`);
+                            });
+                            
+                            // Show success message to user
+                            if (typeof alert !== 'undefined') {
+                                alert(`✅ Prayer notifications scheduled successfully!\n\n${notifications.length} notifications set for the next 30 days.`);
+                            }
+                        } catch (scheduleError) {
+                            console.error("❌ CRITICAL: Failed to schedule notifications:", scheduleError);
+                            alert(`⚠️ Failed to schedule notifications!\n\nError: ${scheduleError.message}\n\nPlease check:\n1. Notification permission is enabled\n2. Battery optimization is disabled for this app\n3. 'Alarms & reminders' permission is enabled (Android 12+)`);
+                        }
                     } else {
-                        console.log("⚠️ No prayer notifications to schedule (all times may have passed)");
+                        console.warn("⚠️ No prayer notifications to schedule (all times may have passed)");
+                        alert("⚠️ No notifications scheduled. All prayer times for today may have passed. Notifications will be scheduled for tomorrow.");
                     }
                 } catch (error) {
-                    console.error("Error scheduling prayer notifications:", error);
+                    console.error("❌ CRITICAL ERROR in schedulePrayerNotifications:", error);
+                    console.error("Error stack:", error.stack);
+                    alert(`❌ Notification system error!\n\nError: ${error.message}\n\nPlease:\n1. Restart the app\n2. Check notification permissions in Settings\n3. Contact support if issue persists`);
                 }
             }
 
@@ -6537,20 +6779,52 @@
                 sendResetLinkBtn.textContent = 'Sending...';
                 showLoading(true); // Show overlay
 
+                console.log("🔐 Attempting to send password reset email to:", email);
+                console.log("🔥 Firebase Auth Domain:", auth.config.authDomain);
+                console.log("🔥 Firebase Project ID:", auth.config.projectId);
+
                 try {
                     await sendPasswordResetEmail(auth, email);
+                    console.log("✅ Password reset email sent successfully to:", email);
+                    console.log("📧 Check inbox and spam folder for email from:", `noreply@${auth.config.authDomain}`);
+                    
                     forgotPasswordMessageEl.textContent = 'Password reset link sent! Check your email (including spam folder).';
                     forgotPasswordMessageEl.className = 'success';
+                    
+                    // Show additional info in console
+                    console.log("ℹ️ Email should arrive within 1-5 minutes");
+                    console.log("ℹ️ Reset link expires in 1 hour");
+                    console.log("ℹ️ If email doesn't arrive, check Firebase Console → Authentication → Templates");
+                    
                     // Optionally close modal after a delay
                     setTimeout(closeForgotPasswordModal, 4000);
                 } catch (error) {
-                    console.error("Password Reset Error:", error);
+                    console.error("❌ Password Reset Error:", error);
+                    console.error("❌ Error Code:", error.code);
+                    console.error("❌ Error Message:", error.message);
+                    
                     let errorMessage = 'Failed to send reset link. Please try again.';
+                    
                     if (error.code === 'auth/invalid-email') {
                         errorMessage = 'Invalid email format.';
+                        console.error("❌ Email format is invalid:", email);
                     } else if (error.code === 'auth/user-not-found') {
                         errorMessage = 'No account found with this email.';
+                        console.error("❌ User not found in Firebase Authentication:", email);
+                        console.log("💡 Tip: User must be registered in Firebase Console → Authentication → Users");
+                    } else if (error.code === 'auth/too-many-requests') {
+                        errorMessage = 'Too many attempts. Please try again later.';
+                        console.error("❌ Rate limit exceeded. Wait 1 hour or try different IP");
+                    } else if (error.code === 'auth/network-request-failed') {
+                        errorMessage = 'Network error. Check your internet connection.';
+                        console.error("❌ Network request failed. Check internet connection");
+                    } else {
+                        console.error("❌ Unknown error. Check Firebase Console for email configuration");
+                        console.log("💡 Tip: Go to Firebase Console → Authentication → Templates");
+                        console.log("💡 Tip: Verify Email/Password provider is enabled");
+                        console.log("💡 Tip: Check authorized domains in Firebase Console");
                     }
+                    
                     forgotPasswordMessageEl.textContent = errorMessage;
                     forgotPasswordMessageEl.className = 'error';
                 } finally {
